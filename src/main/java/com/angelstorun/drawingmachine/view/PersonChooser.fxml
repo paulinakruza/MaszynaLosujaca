@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import com.angelstorun.drawingmachine.util.CheckBoxCellFactory?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.angelstorun.drawingmachine.view.PersonChooserControler">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="50.0" minHeight="50.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" text="Wylosuj" />
+                  <TextField fx:id="numberOfPlayersTextField" layoutX="65.0" layoutY="14.0" promptText="2 osoby" onAction="#handleDrowButton"/>
+                  <Button layoutX="233.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDrowButton" text="Losuj" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="playersTable" editable="true" layoutX="51.0" layoutY="-36.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="jestWPuliColumn" prefWidth="88.0" text="Jest w puli">
+                        <cellFactory>
+                          <CheckBoxCellFactory />
+                        </cellFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="nazwiskoColumn" prefWidth="189.0" text="Imię i nazwisko" />
+                      <TableColumn fx:id="oplaconaSkladkaColumn" prefWidth="75.0" text="Opłacona składka">
+                        <cellFactory>
+                          <CheckBoxCellFactory />
+                        </cellFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="liczbaPokazowColumn" prefWidth="75.0" text="Liczba pokazów" />
+                      <TableColumn fx:id="chodziNaTreningiColumn" prefWidth="75.0" text="Chodzi na treningi">
+                        <cellFactory>
+                          <CheckBoxCellFactory />
+                        </cellFactory>
+                      </TableColumn>
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

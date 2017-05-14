@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minHeight="300.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.angelstorun.drawingmachine.view.MainWindowControler">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Plik">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Wczytaj dane z pliku XML ..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Zapisz dane do pliku XML ..." />
+                  <MenuItem mnemonicParsing="false" text="Zamknij bez zapisywania" />
+              <MenuItem mnemonicParsing="false" onAction="#handleExitWithSave" text="Zamknij" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opcje">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleOptions" text="Ustawienia" />
+                  <Menu mnemonicParsing="false" text="Kolumny brane pod uwagę w wyborze graczy">
+                    <items>
+                        <CheckMenuItem fx:id="isSubscriptionPaid" mnemonicParsing="false" onAction="#handleIsSubscriptionPaid" selected="true" text="Opłacona składka" />
+                        <CheckMenuItem fx:id="numberOfShows" mnemonicParsing="false" onAction="#handleNumberOfShows" selected="true" text="Liczba pokazów" />
+                        <CheckMenuItem fx:id="isActive" mnemonicParsing="false" onAction="#handleIsActive" selected="true" text="Chodzi na treningi" />
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

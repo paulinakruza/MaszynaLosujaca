@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.angelstorun.drawingmachine.view.DrowPlayerDialogControler">
+   <children>
+      <TextArea fx:id="textAreaResult" editable="false" layoutX="25.0" layoutY="50.0" prefHeight="200.0" prefWidth="260.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button layoutX="178.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleCancel" text="Anuluj" />
+      <Button layoutX="239.0" layoutY="261.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOk" prefWidth="50.0" text="OK" />
+   </children>
+</AnchorPane>
