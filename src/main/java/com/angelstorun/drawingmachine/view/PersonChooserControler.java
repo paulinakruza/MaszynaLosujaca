@@ -109,7 +109,7 @@ public class PersonChooserControler {
 
 			boolean okClicked = mainApp.showDrowPlayerDialog(t);
 			if (okClicked) {
-				for (Player p:mainApp.getPlayers()) {
+				for (Player p : mainApp.getPlayers()) {
 					if (mainApp.getPickedPlayers().contains(p)) {
 						p.addOneShow();
 					}
@@ -128,9 +128,6 @@ public class PersonChooserControler {
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
-
-		//System.out.println(mainApp.getPlayers());
-		// Add observable list data to the table
 		playersTable.setItems(mainApp.getPlayers());
 	}
 }
