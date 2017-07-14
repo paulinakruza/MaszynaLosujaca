@@ -59,12 +59,11 @@ public class DomParser {
 	private String getTextValue(Element elem, String tagName) {
 		String textVal = null;
 		NodeList nl = elem.getElementsByTagName(tagName);
-		if(nl != null && nl.getLength()>0) {
+		if (nl != null && nl.getLength() > 0) {
 			Element el = (Element) nl.item(0);
 			textVal = el.getFirstChild().getNodeValue();
 		}
 		return textVal;
-		
 	}
 
 	private int getIntValue(Element elem, String tagName) {

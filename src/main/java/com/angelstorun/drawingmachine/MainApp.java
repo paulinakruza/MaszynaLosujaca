@@ -62,7 +62,7 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("AddressApp");
+		this.primaryStage.setTitle("Maszyna losująca");
 		Platform.setImplicitExit(false);
 		this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
 			@Override
@@ -188,7 +188,7 @@ public class MainApp extends Application {
 
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Wylosowano zawodnik�w");
+			dialogStage.setTitle("Wylosowano zawodników");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);

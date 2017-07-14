@@ -1,8 +1,5 @@
 package com.angelstorun.drawingmachine;
-
-import com.angelstorun.drawingmachine.model.InvalidNumberPlayersException;
-import com.angelstorun.drawingmachine.model.TeamManager;
-
+//Klasa stworzona na potrzeby testów - TODO: usunąć
 public class TestowaKlasa {
 
 	public static void main(String [] args) {
@@ -27,9 +24,5 @@ public class TestowaKlasa {
 //			e.printStackTrace();
 //		}
 //		//System.out.println(manager.getSumNormalizedProbability());
-//		
-		
-		
 	}
-	
 }

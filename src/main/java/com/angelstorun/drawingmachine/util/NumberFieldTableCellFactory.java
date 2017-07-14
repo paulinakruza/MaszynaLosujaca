@@ -13,7 +13,7 @@ import javafx.util.StringConverter;
 
 public class NumberFieldTableCellFactory<T,N> implements Callback<TableColumn<T,N>, TableCell<T,N>> {
 
-	//FIXME: po co s¹ te zmienne?
+	//FIXME: po co sï¿½ te zmienne?
 	private final int                maxChars;
 	private final int                decimals;
 	private final boolean            negativesAllowed;
@@ -100,7 +100,6 @@ public class NumberFieldTableCellFactory<T,N> implements Callback<TableColumn<T,
 				}
 			}
 		};
-
 	}
 	
 	public NumberFieldTableCellFactory(int maxNoChars, int decimalPlaces, boolean allowNegative, StringConverter<N> converter) {

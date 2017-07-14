@@ -9,6 +9,7 @@ import javafx.beans.property.StringProperty;
 
 
 // TODO: rozważyć czy metoda setIncluded i getJestWPuliProperty powinny być w tej klasie (może zmienić którejś/obu nazwy?)
+// TODO: tak, należy tak zrobić, ale jednocześnie należy zmienić odpowiednie nazwy w view.
 public class Player {
 	/**
 	 * Liczba pokazów, w których uczestniczył dany gracz.

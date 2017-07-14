@@ -50,6 +50,7 @@ public class TeamManager {
 		dom.saveAsXmlFile(file, myPlayers);
 	}
 
+	
 	public void recalculateProbability() {
 		int maxShows = -1;
 
@@ -136,10 +137,10 @@ public class TeamManager {
 			this.chosenPlayers = null;
 			throw new InvalidNumberPlayersException(
 					"Za mało zawodników do wylosowania żądanej liczby graczy na pokaz!\n\n"
-							+ "Zmniejsz liczbę zawodników do wylosowania lub wybierz większą pulę graczy oznaczając ich odpowiednio w polu \"Jest w puli\".");
+							+ "Zmniejsz liczbę zawodników do wylosowania lub wybierz większą pulę "
+							+ "graczy oznaczając ich odpowiednio w polu \"Jest w puli\".");
 		}
 	}
-	
 	
 	public ObservableList<Player> getMyPlayers() {
 		return myPlayers;
@@ -149,6 +150,7 @@ public class TeamManager {
 		return this.chosenPlayers;
 	}
 	
+	
 	public boolean isNumberOfShowsConsidered() {
 		return isNumberOfShowsConsidered;
 	}
@@ -156,7 +158,7 @@ public class TeamManager {
 	public void setNumberOfShowsConsidered(boolean isNumberOfShowsConsidered) {
 		this.isNumberOfShowsConsidered = isNumberOfShowsConsidered;
 	}
-	
+
 	
 	public boolean isSubscriptionPaidConsidered() {
 		return isSubscriptionPaidConsidered;

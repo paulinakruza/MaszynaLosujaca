@@ -13,7 +13,7 @@ public class DrowPlayerDialogControler {
 	private MainApp mainApp;
 	private Stage   dialogStage;
 	private Boolean okClicked  = false;
-	private String  textResult = new String("Losowanie wygrywaj¹:\n");
+	private String  textResult = new String("Losowanie wygrywajÄ…:\n");
 
 	@FXML
 	private TextArea textAreaResult;
@@ -36,6 +36,7 @@ public class DrowPlayerDialogControler {
 		dialogStage.close();
 	}
 
+	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}

@@ -43,12 +43,12 @@ public class MainWindowControler {
 	private void handleOpen() {
 		FileChooser fileChooser = new FileChooser();
 
-		// Ustalanie rozszerzenia plików
+		// Ustalanie rozszerzenia plikÃ³w
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki XML (*.xml)", "*.xml");
 		fileChooser.getExtensionFilters().add(extFilter);
 		fileChooser.setInitialDirectory(new File(mainApp.getDefaultDataPath()));
 
-		// Wyœwietlanie okna dialogowego
+		// WyÅ›wietlanie okna dialogowego
 		File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 		if (file != null) {
 			mainApp.loadDataFromFile(file);
@@ -64,13 +64,13 @@ public class MainWindowControler {
 	private void handleSave(){
 		FileChooser fileChooser = new FileChooser();
 		
-		// ustalanie rozsze¿enia pliku
+		// ustalanie rozszerzenia pliku
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Pliki XML (*.xml)", "*.xml");
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		fileChooser.setInitialDirectory(new File(mainApp.getDefaultDataPath()));
 
-		//Wyœwietlanie okna dialogowego
+		//WyÅ›wietlanie okna dialogowego
 		File file = fileChooser.showSaveDialog(mainApp.getPrimaryStage());
 
 		if (file != null) {
@@ -79,8 +79,8 @@ public class MainWindowControler {
 				
 			} catch (ParserConfigurationException | TransformerException e) {
 				Dialogs.create()
-					.title("B³¹d")
-					.masthead("B³¹d zapisywania pliku xml!")
+					.title("BÅ‚Ä…d")
+					.masthead("BÅ‚Ä…d zapisywania pliku xml!")
 					.message(e.getMessage())
 					.showError();
 			}
@@ -118,5 +118,4 @@ public class MainWindowControler {
 	public boolean getActive() {
 		return isActive.isSelected();
 	}
-
 }

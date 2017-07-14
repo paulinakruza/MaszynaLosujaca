@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.NumberStringConverter;
 
-//TODO: dodaæ mo¿liwoœæ wykluczenia kolumny z czynników wp³ywaj¹cych na prawdopodobieñstwo wylosowania
+//TODO: dodaÄ‡ moÅ¼liwoÅ›Ä‡ wykluczenia kolumny z czynnikÃ³w wpÅ‚ywajÄ…cych na prawdopodobieÅ„stwo wylosowania
 public class PersonChooserControler {
 	
 	private MainApp mainApp;
@@ -118,8 +118,8 @@ public class PersonChooserControler {
 			
 		} else {
 			Dialogs.create()
-				.title("B³¹d")
-				.masthead("Podaj liczbê graczy do wylosowania!")
+				.title("BÅ‚Ä…d")
+				.masthead("Podaj liczbÄ™ graczy do wylosowania!")
 				.message("Nie podano liczby graczy do wylosowania.")
 				.showError();
 		}
