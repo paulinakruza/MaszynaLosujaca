@@ -8,8 +8,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
-// TODO: rozważyć czy metoda setIncluded i getJestWPuliProperty powinny być w tej klasie (może zmienić którejś/obu nazwy?)
-// TODO: tak, należy tak zrobić, ale jednocześnie należy zmienić odpowiednie nazwy w view.
 public class Player {
 	/**
 	 * Liczba pokazów, w których uczestniczył dany gracz.
@@ -48,11 +46,11 @@ public class Player {
 	 * Właściwość techniczna wykorzystywana przy losowaniu graczy. 
 	 * Uniemożliwia wybranie kilka razy tego samego gracza w jednym losowaniu.
 	 */
-	private boolean isCounting;
+	private boolean isAccessible;
 
 
 	public Player(String playersName, int showsCount, boolean subscriptionPaid) {
-		isCounting         = true;
+		isAccessible         = true;
 		probability        = 1.0;
 		name               = new SimpleStringProperty(playersName);
 		numberOfShows      = new SimpleIntegerProperty(showsCount);
@@ -72,7 +70,7 @@ public class Player {
 	}
 
 	public void recalculateProbability(int maxShows) {
-		if (isCoutning()) {
+		if (isAccessible()) {
 			
 			//zewiększanie prawdopodobieństwa jeśli składka nie jest opłacona
 			if (!isSubscriptionPaid()) {
@@ -99,7 +97,7 @@ public class Player {
 			boolean isNumberOfShowsConsidered, 
 			int maxShows
 		) {
-		if (isCoutning()) {
+		if (isAccessible()) {
 			//Ustalenie początkowej wartości prawdopodobieństwa
 			setProbability(1.0);
 			
@@ -128,53 +126,77 @@ public class Player {
 		probability+=value;
 	}
 
-	/**
-	 * @return the isCoutning
-	 */
-	public boolean isCoutning() {
-		return (isCounting && isIncluded());
+	public void addOneShow() {
+		this.numberOfShows.set(getNumberOfShows() + 1);
 	}
-	/**
-	 * @param isCoutning the isCoutning to set
-	 */
-	public void setCoutning(boolean isCoutning) {
-		this.isCounting = isCoutning;
+
+	
+	public IntegerProperty getNumberOfShowsProperty() {
+		return numberOfShows;
 	}
+
 	/**
 	 * @return the numberOfShows
 	 */
 	public int getNumberOfShows() {
 		return numberOfShows.get();
 	}
+
 	/**
 	 * @param numberOfShows the numberOfShows to set
 	 */
 	public void setNumberOfShows(int numberOfShows) {
 		this.numberOfShows.set(numberOfShows);
 	}
+	
+
+	public BooleanProperty getIsIncludedProperty() {
+		return included; 
+	}
+
+	public boolean isIncluded() {
+		return included.get();
+	}
+
+	public void setIncluded(Boolean included) {
+		this.included.set(included);
+	}
+	
+
+	public BooleanProperty getIsSubscriptionPaidProperty() {
+		return isSubscriptionPaid;
+	}
+
 	/**
 	 * @return the isSubscriptionPaid
 	 */
 	public boolean isSubscriptionPaid() {
 		return isSubscriptionPaid.get();
 	}
+
 	/**
 	 * @param isSubscriptionPaid the isSubscriptionPaid to set
 	 */
 	public void setSubscriptionPaid(boolean isSubscriptionPaid) {
 		this.isSubscriptionPaid.set(isSubscriptionPaid);
 	}
-	/**
-	 * @return the probability
-	 */
-	public Double getProbability() {
-		return probability;
+	
+
+	public BooleanProperty getIsActiveProperty() {
+		return isActive;
 	}
-	/**
-	 * @param probability the probability to set
-	 */
-	public void setProbability(double probability) {
-		this.probability = probability;
+
+	public Boolean isActive() {
+		return isActive.get();
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive.set(isActive);
+	}
+	
+
+	public StringProperty getNameProperty() {
+		return name;
 	}
 
 	/**
@@ -183,22 +205,6 @@ public class Player {
 	public String getName() {
 		return name.get();
 	}
-	
-	public Boolean getIncluded() {
-		return included.get();
-	}
-	
-	public Boolean isActive() {
-		return isActive.get();
-	}
-	
-	public void setIncluded(Boolean included) {
-		this.included.set(included);
-	}
-	
-	public void setIsActive(Boolean isActive) {
-		this.isActive.set(isActive);
-	}
 
 	/**
 	 * @param name the name to set
@@ -206,34 +212,37 @@ public class Player {
 	public void setName(String name) {
 		this.name.set(name);
 	}
+	
 
-	public StringProperty nameProperty() {
-		return name;
+	/**
+	 * @return the probability
+	 */
+	public Double getProbability() {
+		return probability;
 	}
 
-	public BooleanProperty jestWPuliProperty() {
-		return included; 
+	/**
+	 * @param probability the probability to set
+	 */
+	public void setProbability(double probability) {
+		this.probability = probability;
 	}
 
-	public BooleanProperty chodziNaTreningiProperty() {
-		return isActive;
+	
+	/**
+	 * @return the isAccessible
+	 */
+	public boolean isAccessible() {
+		return (isAccessible && isIncluded());
 	}
 
-	public BooleanProperty oplaconaSkladkaProperty() {
-		return isSubscriptionPaid;
-	}
-
-	public IntegerProperty liczbaPokazowProperty() {
-		return numberOfShows;
-	}
-
-	public boolean isIncluded() {
-		return included.get();
+	/**
+	 * @param isAccessible the isAccessible to set
+	 */
+	public void setIsAccessible(boolean isAccessible) {
+		this.isAccessible = isAccessible;
 	}
 	
-	public void addOneShow() {
-		this.numberOfShows.set(getNumberOfShows() + 1);
-	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -242,7 +251,7 @@ public class Player {
 	public String toString() {
 		return "================\n"
 				+ name.get() + "\n\t"
-				+ "isCounting = " + isCounting + "\n\t"
+				+ "isAccessible = " + isAccessible + "\n\t"
 				+ "numberOfShows = " + numberOfShows.get() + "\n\t"
 				+ "isSubscriptionPaid = " + isSubscriptionPaid.get() + "\n\t"
 				+ "probability = " + probability + "\n";

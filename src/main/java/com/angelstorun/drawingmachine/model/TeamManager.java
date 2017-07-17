@@ -29,7 +29,7 @@ public class TeamManager {
 	private boolean                 isActiveConsidered;
 
 	
-	private int countPlayers() {
+	private int countAvailablePlayers() {
 		int i = 0;
 		for (Player p : myPlayers) {
 			if (p.isIncluded()) {
@@ -56,36 +56,33 @@ public class TeamManager {
 
 		if (isNumberOfShowsConsidered()) {
 			for (Player p : myPlayers) {
-				if ((p.getNumberOfShows() > maxShows) && p.isCoutning()) {
+				if ((p.getNumberOfShows() > maxShows) && p.isAccessible()) {
 					maxShows = p.getNumberOfShows();
 				}
 			}
 		}	
 
 		for (Player p : myPlayers) {
-			if (p.isCoutning()) {
+			if (p.isAccessible()) {
 				p.recalculateProbability(isActiveConsidered(), isSubscriptionPaidConsidered(), isNumberOfShowsConsidered(), maxShows);
 			}
 		}
 	}
 
 	public void pickPlayers(int n) throws InvalidNumberPlayersException {
-		if (n <= countPlayers()) {
+		if (n <= countAvailablePlayers()) {
 			ArrayList<Player> chosenPlayers = new ArrayList<Player>(n);
 			ArrayList<Player> tmpPlayers = new ArrayList<>(myPlayers);
 
 			// Sortowanie listy:
 			// 1. tworzenie comparator
-			Comparator<Player> comparePlayer = (d1, d2) -> d1.getProbability()
-					.compareTo(d2.getProbability());
+			Comparator<Player> comparePlayer = (d1, d2) -> d1.getProbability().compareTo(d2.getProbability());
 
 			// 2. sortowanie w kolejności malejącej
-			Collections.sort(tmpPlayers,
-					Collections.reverseOrder(comparePlayer));
+			Collections.sort(tmpPlayers, Collections.reverseOrder(comparePlayer));
 
 			// Przygotowanie listy list zawodników o tym samym
-			// prawdopodobieństwie.
-			// TODO: może da się to prościej zrobić?
+			// prawdopodobieństwie (kubełków).
 			ArrayList<ArrayList<Player>> sortedPlayers = new ArrayList<ArrayList<Player>>();
 
 			Double lastProbability = -1.0;
@@ -109,21 +106,24 @@ public class TeamManager {
 				sortedPlayers.add(tempList);
 			}
 
-			// Wybór graczy
+			// Wybór graczy z kubełków
 			int countChoosen = 0;
 			Random generator = new Random();
 
 			while (countChoosen < n) {
+				// Jeśli kubełek jest mniejszy niż brakująca liczba graczy,
+				// to wszyscy gracze z niego są wybierani.
 				if (sortedPlayers.get(0).size() <= (n - countChoosen)) {
 					chosenPlayers.addAll(sortedPlayers.get(0));
 					countChoosen += sortedPlayers.get(0).size();
 					sortedPlayers.remove(0);
 					
 				} else {
+					// Jeśli kubełek jest większy niż brakująca liczba graczy,
+					// to gracze z niego są losowo wybierani.
 					int l = (n - countChoosen);
 					for (int k = 0; k < l; k++) {
-						int rand = generator.nextInt(sortedPlayers.get(0)
-								.size());
+						int rand = generator.nextInt(sortedPlayers.get(0).size());
 						chosenPlayers.add(sortedPlayers.get(0).get(rand));
 						countChoosen++;
 						sortedPlayers.get(0).remove(rand);
@@ -145,6 +145,7 @@ public class TeamManager {
 	public ObservableList<Player> getMyPlayers() {
 		return myPlayers;
 	}
+	
 
 	public List<Player> getChosenPlayers() {
 		return this.chosenPlayers;

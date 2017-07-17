@@ -21,19 +21,19 @@
                <children>
                   <TableView fx:id="playersTable" editable="true" layoutX="51.0" layoutY="-36.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="jestWPuliColumn" prefWidth="88.0" text="Jest w puli">
+                      <TableColumn fx:id="isIncludedColumn" prefWidth="88.0" text="Jest w puli">
                         <cellFactory>
                           <CheckBoxCellFactory />
                         </cellFactory>
                       </TableColumn>
-                      <TableColumn fx:id="nazwiskoColumn" prefWidth="189.0" text="Imię i nazwisko" />
-                      <TableColumn fx:id="oplaconaSkladkaColumn" prefWidth="75.0" text="Opłacona składka">
+                      <TableColumn fx:id="nameColumn" prefWidth="189.0" text="Imię i nazwisko" />
+                      <TableColumn fx:id="isSubscriptionPaidColumn" prefWidth="75.0" text="Opłacona składka">
                         <cellFactory>
                           <CheckBoxCellFactory />
                         </cellFactory>
                       </TableColumn>
-                      <TableColumn fx:id="liczbaPokazowColumn" prefWidth="75.0" text="Liczba pokazów" />
-                      <TableColumn fx:id="chodziNaTreningiColumn" prefWidth="75.0" text="Chodzi na treningi">
+                      <TableColumn fx:id="numberOfShowsColumn" prefWidth="75.0" text="Liczba pokazów" />
+                      <TableColumn fx:id="isActiveColumn" prefWidth="75.0" text="Chodzi na treningi">
                         <cellFactory>
                           <CheckBoxCellFactory />
                         </cellFactory>
