@@ -16,7 +16,6 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 
-//TODO: dodać możliwość wykluczenia kolumny z czynników wpływających na prawdopodobieństwo wylosowania
 public class PersonChooserControler {
 	
 	private MainApp mainApp;

@@ -35,13 +35,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
-// TODO: sprawdzić czy zapis i odczyt z pliku zawsze działa dobrze
-/**
- * TODO: być może powinna istnieć możliwość dodania gracza z poziomu aplikacji ...
- * jeśli tak, to możliwość usunięcia też powinna istnieć
- * 
- * DONE: Do zrealizowania w kolejnej wersji programu.
- */
 public class MainApp extends Application {
 	private Stage                  primaryStage;
 	private BorderPane             rootLayout;
@@ -50,7 +43,6 @@ public class MainApp extends Application {
 	private final Clipboard        clipboard = Clipboard.getSystemClipboard();
 	private final ClipboardContent content   = new ClipboardContent();
 	
-	//TODO: być może wygodniej byłoby przechowywać ścieżki jako zmienną typu File?
 	private String                 defaultDataPath     = System.getProperty("user.dir") + System.getProperty("file.separator") + "data"; 
 	private String                 defaultDataFilePath = defaultDataPath + System.getProperty("file.separator") + "zawodnicy_angels.xml";
 
@@ -280,8 +272,7 @@ public class MainApp extends Application {
 	}
 
 	public void getMainAppFilePath() {
-		//FIXME: po co ta zmienna?
-		Preferences pref = Preferences.userNodeForPackage(MainApp.class);
-		//String filePath = pref.get
+//		Do ewentualnego wykorzystania w przyszłości
+//		Preferences pref = Preferences.userNodeForPackage(MainApp.class);
 	}
 }

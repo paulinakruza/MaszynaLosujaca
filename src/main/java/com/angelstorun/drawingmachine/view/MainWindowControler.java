@@ -57,7 +57,7 @@ public class MainWindowControler {
 
 	@FXML
 	private void handleOptions() {
-		//TODO obsluga tej metody
+		//obsluga tej metody
 	}
 	
 	@FXML
