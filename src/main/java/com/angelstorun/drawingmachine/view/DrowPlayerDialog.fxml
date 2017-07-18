@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<!-- TODO: poprawić skalowanie okna - przyciski są na stałe zaczepione? -->
 <AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.angelstorun.drawingmachine.view.DrowPlayerDialogControler">
    <children>
       <TextArea fx:id="textAreaResult" editable="false" layoutX="25.0" layoutY="50.0" prefHeight="200.0" prefWidth="260.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />

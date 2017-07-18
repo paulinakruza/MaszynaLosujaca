@@ -35,13 +35,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
-// TODO: sprawdziæ czy zapis i odczyt z pliku zawsze dzia³a dobrze
-/**
- * TODO: byæ mo¿e powinna istnieæ mo¿liwoœæ dodania gracza z poziomu aplikacji ...
- * jeœli tak, to mo¿liwoœæ usuniêcia te¿ powinna istnieæ
- * 
- * DONE: Do zrealizowania w kolejnej wersji programu.
- */
 public class MainApp extends Application {
 	private Stage                  primaryStage;
 	private BorderPane             rootLayout;
@@ -50,7 +43,6 @@ public class MainApp extends Application {
 	private final Clipboard        clipboard = Clipboard.getSystemClipboard();
 	private final ClipboardContent content   = new ClipboardContent();
 	
-	//TODO: byæ mo¿e wygodniej by³oby przechowywaæ œcie¿ki jako zmienn¹ typu File?
 	private String                 defaultDataPath     = System.getProperty("user.dir") + System.getProperty("file.separator") + "data"; 
 	private String                 defaultDataFilePath = defaultDataPath + System.getProperty("file.separator") + "zawodnicy_angels.xml";
 
@@ -62,7 +54,7 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("AddressApp");
+		this.primaryStage.setTitle("Maszyna losujÄ…ca");
 		Platform.setImplicitExit(false);
 		this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
 			@Override
@@ -101,9 +93,9 @@ public class MainApp extends Application {
 		} catch (ParserConfigurationException | TransformerException e) {
 			Action response = Dialogs.create()
 									.owner(getPrimaryStage())
-									.title("B³¹d zapisu danych do pliku!")
-									.masthead("Zapis danych do pliku nie powiód³ siê!")
-									.message("Czy chcesz zamkn¹æ program? Zmiany dotycz¹ce graczy nie zostan¹ zapisane.")
+									.title("BÅ‚Ä…d zapisu danych do pliku!")
+									.masthead("Zapis danych do pliku nie powiÃ³dÅ‚ siÄ™!")
+									.message("Czy chcesz zamknÄ…Ä‡ program? Zmiany dotyczÄ…ce graczy nie zostanÄ… zapisane.")
 									.actions(Dialog.Actions.OK, Dialog.Actions.CANCEL)
 									.showConfirm();
 
@@ -111,7 +103,7 @@ public class MainApp extends Application {
 				System.exit(0);
 				
 			} else {
-				//U¿ytkownik chce kontynuowaæ pracê. Brak reakcji programu.
+				//UÅ¼ytkownik chce kontynuowaÄ‡ pracÄ™. Brak reakcji programu.
 			}
 		}
 	}
@@ -153,7 +145,6 @@ public class MainApp extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	public Stage getPrimaryStage() {
@@ -176,17 +167,12 @@ public class MainApp extends Application {
 		try {
 			manager.recalculateProbability();
 			
-//			//testy poprawnej zmiany wartoœci za pomoc¹ tabeli.
-//			
-//			
-//			
+//			//testy poprawnej zmiany wartoÅ›ci za pomocÄ… tabeli.
 //			for(Player p: manager.getMyPlayers()){
 //				System.out.format("%20s: %d, %b\n", p.getName(), p.getNumberOfShows(), p.isActive());
 //			}
 //			System.out.println("########################");
-//			
-//			
-//			//koniec testów
+//			//koniec testÃ³w
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/DrowPlayerDialog.fxml"));
@@ -194,7 +180,7 @@ public class MainApp extends Application {
 
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Wylosowano zawodników");
+			dialogStage.setTitle("Wylosowano zawodnikÃ³w");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
@@ -225,14 +211,12 @@ public class MainApp extends Application {
 				controller.showPickedPlayers(manager.getChosenPlayers());
 				controller.setDialogStage(dialogStage);
 
-				// Show the dialog and wait until the user closes it
 				dialogStage.showAndWait();
 				return controller.isOkClicked();
-				//return true;
 
 			} catch (InvalidNumberPlayersException e) {
 				Dialogs.create()
-						.title("B³¹d")
+						.title("BÅ‚Ä…d")
 						.masthead("Brak graczy do wylosowania!")
 						.message(e.getMessage())
 						.showError();
@@ -257,8 +241,8 @@ public class MainApp extends Application {
 			
 		} catch (Exception e) { // catches ANY exception
 			Dialogs.create()
-					.title("B³¹d")
-					.masthead("B³¹d wczytywania pliku!")
+					.title("BÅ‚Ä…d")
+					.masthead("BÅ‚Ä…d wczytywania pliku!")
 					.message(e.getMessage())
 					.showError();
 		}
@@ -288,8 +272,7 @@ public class MainApp extends Application {
 	}
 
 	public void getMainAppFilePath() {
-		//FIXME: po co ta zmienna?
-		Preferences pref = Preferences.userNodeForPackage(MainApp.class);
-		//String filePath = pref.get
+//		Do ewentualnego wykorzystania w przyszÅ‚oÅ›ci
+//		Preferences pref = Preferences.userNodeForPackage(MainApp.class);
 	}
 }

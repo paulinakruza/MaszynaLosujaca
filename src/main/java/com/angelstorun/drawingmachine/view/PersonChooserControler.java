@@ -15,9 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.NumberStringConverter;
 
-//TODO: dodaæ mo¿liwoœæ wykluczenia kolumny z czynników wp³ywaj¹cych na prawdopodobieñstwo wylosowania
 public class PersonChooserControler {
 	
 	private MainApp mainApp;
@@ -26,19 +24,19 @@ public class PersonChooserControler {
 	private TableView<Player> playersTable;
 
 	@FXML
-	private TableColumn<Player, Boolean> jestWPuliColumn;
+	private TableColumn<Player, Boolean> isIncludedColumn;
 
 	@FXML
-	private TableColumn<Player, String> nazwiskoColumn;
+	private TableColumn<Player, String> nameColumn;
 
 	@FXML
-	private TableColumn<Player, Boolean> oplaconaSkladkaColumn;
+	private TableColumn<Player, Boolean> isSubscriptionPaidColumn;
 
 	@FXML
-	private TableColumn<Player, Number> liczbaPokazowColumn;
+	private TableColumn<Player, Number> numberOfShowsColumn;
 
 	@FXML
-	private TableColumn<Player, Boolean> chodziNaTreningiColumn;
+	private TableColumn<Player, Boolean> isActiveColumn;
 
 	@FXML 
 	private TextField numberOfPlayersTextField;
@@ -47,17 +45,17 @@ public class PersonChooserControler {
 	@FXML
 	private void initialize() {
 
-		jestWPuliColumn.setCellValueFactory(cellData -> cellData.getValue().jestWPuliProperty());
-		jestWPuliColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
+		isIncludedColumn.setCellValueFactory(cellData -> cellData.getValue().getIsIncludedProperty());
+		isIncludedColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
 			@Override
 			public void handle(CellEditEvent<Player, Boolean> event) {
 				((Player)event.getTableView().getItems().get(event.getTablePosition().getRow())).setIncluded(event.getNewValue());
 			}
 		});
 
-		nazwiskoColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-		nazwiskoColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-		nazwiskoColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,String>>() {	
+		nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+		nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		nameColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,String>>() {	
 			@Override
 			public void handle(CellEditEvent<Player, String> event) {
 				((Player)event.getTableView().getItems().get(event.getTablePosition().getRow())).setName(event.getNewValue());
@@ -65,25 +63,25 @@ public class PersonChooserControler {
 			}
 		});
 
-		oplaconaSkladkaColumn.setCellValueFactory(cellData -> cellData.getValue().oplaconaSkladkaProperty());
-		oplaconaSkladkaColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
+		isSubscriptionPaidColumn.setCellValueFactory(cellData -> cellData.getValue().getIsSubscriptionPaidProperty());
+		isSubscriptionPaidColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
 			@Override
 			public void handle(CellEditEvent<Player, Boolean> event) {
 				((Player)event.getTableView().getItems().get(event.getTablePosition().getRow())).setSubscriptionPaid(event.getNewValue());
 			}
 		});
 
-		liczbaPokazowColumn.setCellValueFactory(cellData -> cellData.getValue().liczbaPokazowProperty());
-		liczbaPokazowColumn.setCellFactory(col -> new IntegerEditingCell());
-		liczbaPokazowColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Number>>() {	
+		numberOfShowsColumn.setCellValueFactory(cellData -> cellData.getValue().getNumberOfShowsProperty());
+		numberOfShowsColumn.setCellFactory(col -> new IntegerEditingCell());
+		numberOfShowsColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Number>>() {	
 			@Override
 			public void handle(CellEditEvent<Player, Number> event) {
 				((Player)event.getTableView().getItems().get(event.getTablePosition().getRow())).setNumberOfShows(event.getNewValue().intValue());
 			}
 		});
 
-		chodziNaTreningiColumn.setCellValueFactory(cellData -> cellData.getValue().chodziNaTreningiProperty());
-		chodziNaTreningiColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
+		isActiveColumn.setCellValueFactory(cellData -> cellData.getValue().getIsActiveProperty());
+		isActiveColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Player,Boolean>>() {
 			@Override
 			public void handle(CellEditEvent<Player, Boolean> event) {
 				((Player)event.getTableView().getItems().get(event.getTablePosition().getRow())).setIsActive(event.getNewValue());
@@ -109,7 +107,7 @@ public class PersonChooserControler {
 
 			boolean okClicked = mainApp.showDrowPlayerDialog(t);
 			if (okClicked) {
-				for (Player p:mainApp.getPlayers()) {
+				for (Player p : mainApp.getPlayers()) {
 					if (mainApp.getPickedPlayers().contains(p)) {
 						p.addOneShow();
 					}
@@ -118,8 +116,8 @@ public class PersonChooserControler {
 			
 		} else {
 			Dialogs.create()
-				.title("B³¹d")
-				.masthead("Podaj liczbê graczy do wylosowania!")
+				.title("BÅ‚Ä…d")
+				.masthead("Podaj liczbÄ™ graczy do wylosowania!")
 				.message("Nie podano liczby graczy do wylosowania.")
 				.showError();
 		}
@@ -128,9 +126,6 @@ public class PersonChooserControler {
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
-
-		//System.out.println(mainApp.getPlayers());
-		// Add observable list data to the table
 		playersTable.setItems(mainApp.getPlayers());
 	}
 }
